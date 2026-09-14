@@ -1,0 +1,925 @@
+<title>Priyanka Balaji</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --ink:#1C1C1C;
+    --ink-soft:#4A4A4A;
+    --mist:#8A8A8A;
+    --line:#E3E1DC;
+    --accent:#8B3A2B;
+    --code-bg:#F4F3F0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#181818;
+      --ink:#EDECEA;
+      --ink-soft:#C7C5C0;
+      --mist:#8F8D89;
+      --line:#333230;
+      --accent:#D9876E;
+      --code-bg:#232220;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#181818;
+    --ink:#EDECEA;
+    --ink-soft:#C7C5C0;
+    --mist:#8F8D89;
+    --line:#333230;
+    --accent:#D9876E;
+    --code-bg:#232220;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Work Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    transition: background-color 0.4s ease;
+  }
+
+  /* very light pastel wash behind the whole page, shifts per active tab */
+  :root{
+    --tint-research:#FBFAF7;
+    --tint-caos:#F5F9FA;
+    --tint-mechanical:#FAF7F3;
+    --tint-internships:#F7F9F5;
+    --tint-independent:#F9F7FA;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --tint-research:#1C1B18;
+      --tint-caos:#161A1C;
+      --tint-mechanical:#1C1A17;
+      --tint-internships:#181C17;
+      --tint-independent:#1B181D;
+    }
+  }
+  :root[data-theme="dark"]{
+    --tint-research:#1C1B18;
+    --tint-caos:#161A1C;
+    --tint-mechanical:#1C1A17;
+    --tint-internships:#181C17;
+    --tint-independent:#1B181D;
+  }
+  body[data-active-tab="research"]{ background:var(--tint-research); }
+  body[data-active-tab="caos"]{ background:var(--tint-caos); }
+  body[data-active-tab="mechanical"]{ background:var(--tint-mechanical); }
+  body[data-active-tab="internships"]{ background:var(--tint-internships); }
+  body[data-active-tab="independent"]{ background:var(--tint-independent); }
+  a{ color:var(--ink); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a:hover{ color:var(--accent); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  h1,h2,h3{ font-family:"Spectral", Georgia, serif; font-weight:600; text-wrap:balance; margin:0; }
+
+  .wrap{ max-width:760px; margin:0 auto; padding: 3.5rem 1.5rem 6rem; }
+
+  header.page-head{ margin-bottom:2.6rem; }
+  .page-head-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:1.6rem; }
+  .page-head-text{ flex:1 1 auto; min-width:0; }
+  .headshot{
+    flex:0 0 auto; width:112px; height:112px; border-radius:50%; object-fit:cover;
+    border:1px solid var(--line); margin-top:0.15rem;
+  }
+  @media (max-width:560px){
+    .page-head-top{ flex-direction:column-reverse; align-items:flex-start; gap:1rem; }
+    .headshot{ width:84px; height:84px; }
+  }
+  header.page-head h1{ font-size:2rem; margin-bottom:0.4rem; font-optical-sizing:auto; }
+  header.page-head .role{ color:var(--ink-soft); font-size:1.02rem; }
+  header.page-head .bio{ margin:1.1rem 0 0; max-width:64ch; color:var(--ink-soft); }
+  header.page-head .bio p{ margin:0; }
+  header.page-head .contact{
+    margin-top:1.1rem; display:flex; flex-wrap:wrap; gap:0.3rem 1rem;
+    font-family:"Space Mono", monospace; font-size:0.8rem; color:var(--mist);
+  }
+  header.page-head .contact a{ color:var(--mist); }
+  header.page-head .contact a:hover{ color:var(--accent); }
+
+  nav.tabs{
+    position:sticky; top:0; z-index:10; background:var(--paper);
+    display:flex; gap:0.35rem; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    margin:0 -1.5rem 2.6rem; padding:0.9rem 1.5rem; border-bottom:1px solid var(--line);
+    scrollbar-width:thin;
+  }
+  nav.tabs .tab-btn{
+    flex:0 0 auto; appearance:none; border:1px solid transparent; cursor:pointer;
+    font-family:"Space Mono", monospace; font-size:0.74rem; letter-spacing:0.03em;
+    color:var(--mist); background:transparent; padding:0.45rem 0.8rem;
+    border-radius:5px; white-space:nowrap; transition:background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  }
+  nav.tabs .tab-btn:hover{ color:var(--ink-soft); background:var(--code-bg); }
+  nav.tabs .tab-btn.active{
+    color:var(--paper); background:var(--accent); border-color:var(--accent); font-weight:700;
+  }
+
+  .mini-toc{ display:flex; flex-direction:column; gap:0.3rem; margin: 0 0 2.6rem; }
+  .mini-toc a{ color:var(--ink-soft); font-size:0.92rem; text-decoration:none; }
+  .mini-toc a:hover{ color:var(--accent); text-decoration:underline; }
+
+  section.group{ margin-bottom:1rem; scroll-margin-top:3.6rem; }
+  section.group > h2{
+    font-size:0.78rem; font-family:"Space Mono", monospace; font-weight:500; letter-spacing:0.02em;
+    color:var(--mist); text-transform:uppercase;
+    padding-bottom:0.6rem; margin-bottom:1.3rem; border-bottom:1px solid var(--line);
+  }
+  section.group > p.group-intro{ color:var(--ink-soft); margin: -0.3rem 0 2rem; max-width:62ch; }
+
+  article.project{ margin-bottom:3.4rem; scroll-margin-top:3.6rem; }
+  article.project + article.project{ padding-top:3.4rem; border-top:1px solid var(--line); }
+
+  .project-title{ font-size:1.3rem; line-height:1.35; margin-bottom:0.5rem; }
+  .project-title .loc{ color:var(--ink-soft); }
+  .project-where{ color:var(--ink-soft); font-size:0.96rem; }
+  .project-when{ color:var(--mist); font-family:"Space Mono", monospace; font-size:0.82rem; margin-top:0.15rem; }
+
+  .summary{ margin: 1.2rem 0 1.3rem; max-width:64ch; }
+  .summary p{ margin:0; }
+
+  .detail-label{
+    font-family:"Space Mono", monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--mist); margin: 1.5rem 0 0.7rem;
+  }
+
+  ul.detail{ margin:0; padding-left:1.2rem; max-width:66ch; }
+  ul.detail li{ margin-bottom:0.55rem; color:var(--ink-soft); }
+  ul.detail li::marker{ color:var(--accent); }
+  ul.detail li strong{ color:var(--ink); font-weight:600; }
+
+  .inline-code{
+    font-family:"Space Mono", monospace; font-size:0.88em;
+    background:var(--code-bg); padding:0.08em 0.32em; border-radius:3px; color:var(--ink);
+  }
+
+  figure.fig{ margin: 1.3rem 0; }
+  figure.fig img, figure.fig video{ display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:2px; }
+  figure.fig figcaption{
+    font-family:"Space Mono", monospace; font-size:0.75rem; color:var(--mist); margin-top:0.5rem; line-height:1.5;
+  }
+  .fig-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.3rem 0; }
+  .fig-row > *{ min-width:0; }
+  .fig-row figure.fig{ margin:0; }
+  @media (max-width:600px){ .fig-row{ grid-template-columns:1fr; } }
+
+  .fig-slot{
+    aspect-ratio:4/3; border:1px dashed var(--line); border-radius:2px;
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:1rem;
+    color:var(--mist); font-family:"Space Mono", monospace; font-size:0.74rem; line-height:1.5;
+    background: repeating-linear-gradient(135deg, var(--code-bg), var(--code-bg) 9px, var(--paper) 9px, var(--paper) 18px);
+  }
+
+  .links{ margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem 1.3rem; font-size:0.9rem; }
+  .links a::before{ content:"→ "; color:var(--accent); }
+
+  .video-cards{ display:flex; flex-wrap:wrap; gap:0.7rem; margin-top:1.1rem; }
+  .video-card{
+    display:flex; align-items:center; gap:0.55rem; text-decoration:none;
+    border:1px solid var(--line); border-radius:4px; padding:0.55rem 0.9rem 0.55rem 0.7rem;
+    color:var(--ink); font-size:0.86rem; max-width:100%;
+  }
+  .video-card:hover{ border-color:var(--accent); color:var(--accent); }
+  .video-card .play-icon{ flex:0 0 auto; width:1.5rem; height:1.5rem; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; }
+  .video-card .play-icon svg{ width:0.6rem; height:0.6rem; fill:var(--paper); margin-left:1px; }
+  .video-card span.vlabel{ line-height:1.3; }
+  .video-card span.vlabel small{ display:block; color:var(--mist); font-family:"Space Mono", monospace; font-size:0.68rem; margin-top:0.1rem; }
+
+  .deck-open-btn{
+    display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.1rem;
+    border:1px solid var(--line); border-radius:4px; padding:0.6rem 1rem;
+    background:var(--code-bg); color:var(--ink); font-family:"Space Mono", monospace; font-size:0.8rem;
+    cursor:pointer;
+  }
+  .deck-open-btn:hover{ border-color:var(--accent); color:var(--accent); }
+
+  .skills{ margin-top:1.3rem; color:var(--mist); font-size:0.88rem; }
+  .skills .detail-label{ margin-bottom:0.35rem; }
+
+  .math-note{ color:var(--mist); font-size:0.82rem; margin-top:0.4rem; max-width:64ch; }
+
+  footer.page-foot{
+    margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line);
+    color:var(--mist); font-size:0.88rem;
+  }
+
+  .toggle-btn{
+    position:fixed; bottom:1.2rem; right:1.2rem; z-index:20;
+    font-family:"Space Mono", monospace; font-size:0.72rem;
+    background:var(--paper); border:1px solid var(--line); color:var(--mist);
+    padding:0.45rem 0.7rem; border-radius:3px; cursor:pointer;
+  }
+  .toggle-btn:hover{ color:var(--ink); }
+
+  /* deck lightbox */
+  .deck-overlay{
+    position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.82);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:1rem;
+  }
+  .deck-overlay[hidden]{ display:none; }
+  .deck-overlay img{ max-width:min(920px,94vw); max-height:76vh; border-radius:3px; background:#fff; }
+  .deck-bar{ display:flex; align-items:center; gap:1.2rem; margin-top:1rem; color:#fff; font-family:"Space Mono", monospace; font-size:0.8rem; }
+  .deck-bar button{
+    appearance:none; border:1px solid rgba(255,255,255,0.35); background:transparent; color:#fff;
+    border-radius:3px; padding:0.4rem 0.85rem; cursor:pointer; font-family:inherit; font-size:inherit;
+  }
+  .deck-bar button:hover{ border-color:#fff; }
+  .deck-close{
+    position:absolute; top:1.1rem; right:1.3rem; background:none; border:none; color:#fff;
+    font-size:1.6rem; line-height:1; cursor:pointer; padding:0.2rem 0.5rem;
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="page-head">
+    <div class="page-head-top">
+      <div class="page-head-text">
+        <h1>Priyanka Supraja Balaji</h1>
+        <div class="role">Mechanical Engineering, Control and Dynamics Minor, California Institute of Technology</div>
+        <div class="bio">
+          <p>I am a rising third-year at Caltech studying mechanical engineering with a minor in Control and Dynamics. My interests are in space robotics and autonomy, and I have worked at the intersection of dynamics, optimization, and autonomy. At Caltech, I am President of Caltech Air and Outer Space, where I lead the CubeSat design and contribute to the rover team; I grew the club from an initial few members to over forty active members. I split my time between the Bay Area and Los Angeles.</p>
+        </div>
+        <div class="contact">
+          <a href="https://www.linkedin.com/in/priyanka-supraja-balaji-570728225/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:priyanka@caltech.edu">priyanka@caltech.edu</a>
+        </div>
+      </div>
+      <img class="headshot" src="media/headshot.jpg" alt="Portrait of Priyanka Supraja Balaji smiling outdoors, wearing a denim jacket and a teal pendant necklace">
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Portfolio sections">
+    <button class="tab-btn" role="tab" data-tab="research" id="tabbtn-research">Research</button>
+    <button class="tab-btn" role="tab" data-tab="caos" id="tabbtn-caos">Caltech Air and Outer Space</button>
+    <button class="tab-btn" role="tab" data-tab="internships" id="tabbtn-internships">Internships</button>
+    <button class="tab-btn" role="tab" data-tab="mechanical" id="tabbtn-mechanical">Mini Mechanical Projects</button>
+    <button class="tab-btn" role="tab" data-tab="independent" id="tabbtn-independent">Independent Projects</button>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- RESEARCH -->
+  <!-- ============================================================ -->
+  <section class="group" id="research" role="tabpanel" aria-labelledby="tabbtn-research">
+    <h2>Research</h2>
+
+    <article class="project" id="rexlab">
+      <h3 class="project-title"><span class="loc">MIT Robotic Exploration Lab</span> - Differentiable Model Predictive Control and Data-Enabled Predictive Control on Quadrotor Hardware</h3>
+      <div class="project-where">Visiting Summer Undergraduate Research Fellow, advised by Professor Zachary Manchester</div>
+      <div class="project-when">June 2026 to Present</div>
+
+      <div class="summary"><p>Model-based controllers guarantee safety but degrade under real-world aerodynamic disturbances they were never modeled to handle; purely data-driven controllers adapt to those disturbances but offer no safety guarantees or physical interpretability. I built and flight-tested two controllers on a Crazyflie 2.1 quadrotor that try to close that gap: a Model Predictive Controller whose cost and dynamics parameters are learned end-to-end by differentiating through the closed-loop rollout, and a second, model-free controller built with Data-Enabled Predictive Control that predicts directly from recorded trajectory data through a Hankel matrix, with no explicit dynamics model at all. Both run in real time onboard the aircraft, and the work is being written up for a differentiable-control paper.</p></div>
+
+      <div class="fig-row">
+        <figure class="fig">
+          <img src="media/rexlab_motivation_slide.jpg" alt="Slide from the MIT SURF presentation naming the three-layer architecture: estimation layer maps motion-capture and IMU data to a state estimate, control layer computes safe inputs with constrained QP and DeePC optimization, and a learning layer backpropagates trajectory-tracking error through the closed-loop rollout to tune cost and dynamics parameters end-to-end">
+        </figure>
+        <figure class="fig">
+          <video src="media/rexlab_drone_flight.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>The Crazyflie 2.1 in flight over the motion-capture testbed</figcaption>
+        </figure>
+      </div>
+
+      <button class="deck-open-btn" type="button" data-deck-open="rexlab">Go through the full research presentation</button>
+
+      <div class="detail-label">State estimation and dynamics</div>
+      <ul class="detail">
+        <li>The <strong>estimation layer</strong> fuses absolute position from a VICON motion-capture system with linear velocity estimated onboard by an <strong>Extended Kalman Filter</strong> operating on IMU measurements, producing the twelve-state estimate (position, velocity, attitude, angular rate) the controller consumes. I kept this as a fixed, inspectable state vector rather than a learned latent representation, an interpretability-versus-performance tradeoff that runs through the whole project.</li>
+      </ul>
+
+      <div class="detail-label">Constrained optimization and differentiability</div>
+      <ul class="detail">
+        <li>The <strong>control layer</strong> solves a Quadratic Program at every timestep: minimize a quadratic tracking-and-control-effort cost subject to the linearized dynamics and actuator limits, using <span class="inline-code">Clarabel</span> as the solver.</li>
+        <li>I implemented the full closed-loop rollout, estimator, solve, simulated dynamics step, as a differentiable computation graph in <span class="inline-code">JAX</span> using <span class="inline-code">qpax</span> for differentiable quadratic-program layers, then backpropagated trajectory-tracking loss through the entire rollout to compute gradients of that loss with respect to the cost-function weights.</li>
+        <li>Used <strong>stochastic domain randomization</strong>, randomizing physical parameters such as mass and center-of-mass offset across rollouts during training, so the learned parameters generalize past the nominal dynamics model instead of overfitting to it.</li>
+      </ul>
+
+      <figure class="fig">
+        <img src="media/rexlab_loss_eq.jpg" alt="Loss function equation combining position error, attitude error, ground-penalty hinge loss, and a dA and dB regularizer term">
+        <figcaption>The training loss functional used for the gradient-descent parameter search</figcaption>
+      </figure>
+
+      <div class="detail-label">Hardware results</div>
+      <ul class="detail">
+        <li>Deployed both the hand-tuned and gradient-descent-learned Model Predictive Control parameter sets onboard the Crazyflie over <span class="inline-code">ROS2</span> and <span class="inline-code">Crazyswarm2</span> for a hover-to-target flight test with an unmodeled mass attached to the airframe, to stress-test generalization beyond the nominal dynamics model.</li>
+        <li>Both parameter sets saturate available thrust under the added mass, but the gradient-descent-learned parameters still reach a closer approach to the target, 0.41 meters versus 0.89 meters, and a higher peak altitude than the hand-tuned parameters; this is a directional result given both controllers hit their actuator limits.</li>
+      </ul>
+      <figure class="fig">
+        <img src="media/rexlab_mass_results.jpg" alt="Six-panel comparison of hand-tuned versus gradient-descent-learned MPC with an unmodeled mass attached to the quadrotor: position error to hover target, altitude versus time, XY trajectory, commanded thrust, tilt angle, and summary metrics bar chart; both controllers saturate commanded thrust for nearly the full flight">
+        <figcaption>Hand-tuned versus gradient-descent-learned Model Predictive Control, with an unmodeled mass attached</figcaption>
+      </figure>
+
+      <div class="detail-label">Data-Enabled Predictive Control, a model-free alternative</div>
+      <ul class="detail">
+        <li>Collected fifteen Crazyflie trajectories from varied initial conditions to a hover setpoint and used them to build an offline Hankel-matrix data predictor, replacing the explicit dynamics model in the Quadratic Program entirely with a data-driven prediction built directly from recorded input and output trajectories.</li>
+        <li>Constructed and compared three Hankel-matrix variants to study the conditioning-and-accuracy tradeoff: trimming the hover portion of each trajectory, adding Gaussian process noise only at the hover setpoint, and adding noise throughout the full trajectory; noise everywhere gave the best-conditioned matrix and the lowest prediction error at both a one-step and full-horizon prediction window.</li>
+      </ul>
+      <figure class="fig">
+        <img src="media/rexlab_deepc_conditioning.jpg" alt="Three-panel bar chart comparing conditioning and prediction accuracy across three Hankel matrix construction strategies: trimmed hover, noise at hover only, and noise everywhere">
+        <figcaption>Data-Enabled Predictive Control Hankel-matrix conditioning and prediction accuracy across construction strategies</figcaption>
+      </figure>
+      <p class="math-note">In parallel, I also built a two-wheel self-balancing inverted-pendulum testbed to prototype and validate Proportional-Integral-Derivative control, Linear-Quadratic Regulator control, and Kalman and Extended Kalman Filter estimators, including a controllability and observability analysis using the Kalman rank test, before carrying lessons over to the quadrotor controllers above.</p>
+
+      <div class="skills"><div class="detail-label">Skills</div>Model Predictive Control, differentiable optimization, JAX (automatic differentiation, gradient descent), Quadratic Programming, Extended Kalman Filter, Data-Enabled Predictive Control, convex solvers (Clarabel), Linear-Quadratic Regulator, Proportional-Integral-Derivative control, ROS2, Crazyswarm2, motion-capture systems, Python</div>
+    </article>
+
+    <article class="project" id="arclab">
+      <h3 class="project-title"><span class="loc">Caltech Autonomous Robotics and Control Laboratory</span> - Probabilistic Models for Spacecraft Camera Fault Detection, Isolation, and Recovery</h3>
+      <div class="project-where">Undergraduate Researcher, advised by Professor Soon-Jo Chung</div>
+      <div class="project-when">July 2025 to Present</div>
+
+      <div class="summary"><p>A spacecraft or rover operating multiple cameras needs to determine, in real time, whether a given camera has failed and which fault occurred, before it can safely fall back to a degraded operating mode. I am building the statistical models behind that decision and framing sensor-checking itself as an active information-gathering problem, so the system decides what to check next rather than passively classifying faults after the fact. I generated the training and evaluation dataset myself on Caltech's spacecraft motion flat floor, the largest facility of its kind at a university, and reprocessed it multiple times over the past year to build in explicit causal structure.</p></div>
+
+      <div class="detail-label">What I modeled and coded</div>
+      <ul class="detail">
+        <li>Built the full data-generation pipeline in <span class="inline-code">ROS2</span> and Python: flew ten labeled trajectories on the flat floor under camera fault hypotheses including lens blur from rapid maneuvers, partial lens block from debris or misalignment, and glare, and computed six reliability metrics (feature count, image sharpness, brightness statistics, contour geometry) from consecutive image pairs at every frame.</li>
+        <li>Added an explicit <strong>observability Gramian</strong> check so a fault probability is only assigned when the visual state is mathematically informative, and grounded each fault hypothesis in <strong>environmental variables</strong> derived from VICON, such as whether the camera's optical axis geometrically intersects a known wall or asteroid bounding box, rather than inferring faults from raw pixel statistics alone.</li>
+        <li>Implemented and benchmarked two competing probabilistic model families for fault classification: a <strong>class-conditional Gaussian inverse model</strong>, a closed-form, fully interpretable baseline that assumes Gaussian likelihoods per fault class, and a <strong>Conditional Neural Spline Flow</strong>, a normalizing-flow architecture that learns a more flexible, non-Gaussian conditional density at the cost of interpretability.</li>
+        <li>Tuned the Neural Spline Flow through four iterations, increasing spline bins and coupling-layer depth, and validated the improvement with bootstrap confidence intervals and Cohen's kappa agreement scores rather than a single accuracy number.</li>
+      </ul>
+
+      <div class="detail-label">Results</div>
+      <ul class="detail">
+        <li>The tuned Neural Spline Flow reached 85.0 percent balanced classification accuracy across four fault classes, versus 61.7 percent for the Gaussian baseline, a 23.3 percentage point improvement with a bootstrap 95 percent confidence interval of positive 20.3 to positive 26.2 percentage points, confirming the gap is real rather than noise.</li>
+        <li>Also tested whether a temporal window of several consecutive frames would help; it closed most of the gap for the Gaussian model but consistently hurt the Neural Spline Flow, so the best-performing configuration uses no temporal window at all.</li>
+      </ul>
+      <figure class="fig" style="max-width:640px; margin:1.3rem auto;">
+        <img src="media/arclab_best_result.jpg" alt="Slide detailing the Neural Spline Flow versus Gaussian model comparison with no temporal window: Cohen's kappa of 0.79 versus 0.42, a bootstrap 95 percent confidence interval of +20.3 to +26.2 percentage points, and per-class wins for blurry, half lens block, and no-fault classes">
+        <figcaption>Neural Spline Flow versus Gaussian baseline, no temporal window: 85.0 percent versus 61.7 percent balanced accuracy</figcaption>
+      </figure>
+
+      <div class="skills"><div class="detail-label">Skills</div>Normalizing flows, Bayesian and probabilistic modeling, causal reasoning, observability analysis, information theory, statistical hypothesis testing, ROS2, Python, MATLAB</div>
+
+      <button class="deck-open-btn" type="button" data-deck-open="arclab">Go through a curated summary of a year of research</button>
+    </article>
+
+    <article class="project" id="lidar-mars">
+      <h3 class="project-title"><span class="loc">Michigan Tech Mobile Robotics Lab</span> - Safe LiDAR Perception Framework for Mars Rover Navigation in Dust Storms</h3>
+      <div class="project-where">Undergraduate Researcher, advised by Professor Nathir Rawashdeh</div>
+      <div class="project-when">2024 to 2025</div>
+
+      <div class="summary"><p>Mars experiences local, regional, and planetary dust storms year-round that scatter and absorb LiDAR signal, degrading point-cloud accuracy by up to 35 percent and risking a rover missing a hazardous rock. Current rover autonomy depends on human-selected waypoints from Earth because there is no onboard mechanism to detect when LiDAR perception has degraded. I presented this work at the Sigma Xi Student Research Showcase, where it won Second Place in the Undergraduate Division and the Interdisciplinary Engineering Award.</p></div>
+
+      <button class="deck-open-btn" type="button" data-deck-open="lidar">Go through the full presentation</button>
+
+      <div class="links">
+        <a href="https://events.projectboard.world/srs2026/project/225711" target="_blank" rel="noopener">Sigma Xi Student Research Showcase, project entry on ProjectBoard</a>
+      </div>
+
+      <div class="skills"><div class="detail-label">Skills</div>LiDAR and camera sensor fusion, MATLAB, statistical modeling, point-cloud processing, terrain degradation analysis</div>
+    </article>
+
+    <article class="project" id="mtu">
+      <h3 class="project-title"><span class="loc">Michigan Tech Mobile Robotics Lab</span> - Autonomous LiDAR-SLAM Disinfection Robot for Tribal Fish Hatcheries</h3>
+      <div class="project-where">Undergraduate Researcher, advised by Professor Nathir Rawashdeh</div>
+      <div class="project-when">June 2023 to November 2025</div>
+
+      <div class="summary"><p>I built the real-time mapping and localization software for a mobile robot that autonomously navigates and disinfects fish hatchery tank rooms for the Keweenaw Community in Michigan, funded by a $1,000 DevelopSpace Grant. The robot has no pre-built map of the tank room, so it has to construct one and localize against it as it moves; I combined a LiDAR-based Simultaneous Localization and Mapping pipeline with monocular visual odometry to make that work reliably in the field rather than only in a lab mockup.</p></div>
+
+      <div class="fig-row">
+        <figure class="fig">
+          <img src="media/mtu_occupancy.jpg" alt="MATLAB figure: occupancy map built using LiDAR SLAM, showing a blue robot trajectory loop with a red localized-pose segment over a grey occupancy grid with white LiDAR-return streaks marking walls and obstacles">
+          <figcaption>Occupancy map built from the LiDAR-SLAM pipeline, with the recovered robot trajectory overlaid</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="media/mtu_lidarscan.jpg" alt="MATLAB figure: a single raw LiDAR scan showing point returns tracing the walls and corners of a room, plotted in the sensor's local X-Y frame">
+          <figcaption>A single raw LiDAR scan, before integration into the occupancy map</figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-label">What I modeled and coded</div>
+      <ul class="detail">
+        <li>Used a <span class="inline-code">YD-G4 LiDAR</span> sensor to generate a live three-dimensional point cloud, then built the two-dimensional occupancy grid shown above from it in MATLAB's SLAM and Navigation Toolboxes to identify which areas of the tank room the robot could actually drive through.</li>
+        <li>Implemented loop closure and pose-graph optimization so the map stays consistent as the robot revisits the same area from a different heading, instead of drifting.</li>
+        <li>Added monocular visual odometry as a second, independent motion estimate: frame-to-frame feature tracking from the onboard camera estimates the robot's translation and rotation, which I used to cross-check and correct the LiDAR-only pose estimate.</li>
+        <li>Field-tested the full pipeline directly in hatchery tank rooms, iterating on parameter tuning against real reflective-water and metal-tank geometry, which behaves very differently from a clean lab environment.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>Simultaneous Localization and Mapping, monocular visual odometry, point-cloud processing, pose-graph optimization, MATLAB (SLAM and Navigation Toolboxes)</div>
+
+      <div class="links">
+        <a href="https://github.com/PriyankaSB24/Autonomous-Mobile-Vehicle-MATLAB-Projects/tree/main/Hatchery-Disinfection-Autonomous-Robot" target="_blank" rel="noopener">Project code on GitHub</a>
+        <a href="https://drive.google.com/file/d/1_oId-bQXuZ9fnwfoUnyKB_SArL1oQIVl/view?usp=sharing" target="_blank" rel="noopener">Video demonstration</a>
+      </div>
+    </article>
+
+    <article class="project" id="mscberkeley">
+      <h3 class="project-title"><span class="loc">UC Berkeley Mechanical Systems and Control Lab</span> - Learning-Based Manipulation of Deformable Objects with Industrial Robotic Arms</h3>
+      <div class="project-where">Undergraduate Researcher, advised by Professor Masayoshi Tomizuka, with PhD candidate Changhao Wang</div>
+      <div class="project-when">October 2022 to May 2023</div>
+
+      <div class="summary"><p>Cloth has effectively infinite degrees of freedom, so classical rigid-body control breaks down; there is no small, fixed set of joint angles that describes its state. I worked on getting simulated industrial robotic arms to manipulate cloth by building the physics simulation and tuning a Graph Neural Network that represents the cloth's state well enough for a control policy to act on.</p></div>
+
+      <div class="detail-label">What I modeled and coded</div>
+      <ul class="detail">
+        <li>Built and fine-tuned a physics simulation environment in <span class="inline-code">PyBullet</span> and <span class="inline-code">PlasticineLab</span> to model simulated KUKA arms manipulating a cloth object, since real-hardware deformable-object trials are slow and hard to instrument.</li>
+        <li>Represented the cloth as a mesh graph and optimized the hyperparameters of a mesh Graph Neural Network (message-passing layer count, hidden dimension, node and edge feature design) so the model could predict how the cloth's mesh deforms under a given manipulation action; the near-infinite degrees of freedom get compressed into a graph the network can reason over.</li>
+        <li>Read the current literature on deformable-object manipulation to inform those modeling choices and worked directly with a PhD candidate and the lab's Principal Investigator on experimental design.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>Graph Neural Networks, high-fidelity physics simulation, PyBullet, computer vision</div>
+    </article>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CAOS -->
+  <!-- ============================================================ -->
+  <section class="group" id="caos" role="tabpanel" aria-labelledby="tabbtn-caos" hidden>
+    <h2>Caltech Air and Outer Space</h2>
+    <p class="group-intro">As President, I rebuilt Caltech's AIAA student branch from a few members into a program of more than forty active members running CubeSat and lunar-rover flight-hardware projects within a year, and helped the club secure the funding and industry partnerships that made them possible. The projects below are where I did direct engineering work.</p>
+
+    <article class="project" id="coverguard">
+      <h3 class="project-title"><span class="loc">Caltech Air and Outer Space</span> - CoverGuard: Diagnosing Cover-Crop Failure from Orbit</h3>
+      <div class="project-where">NASA Space to Soil Challenge</div>
+      <div class="project-when">2025 to 2026, top-10 finalist, pitched at NASA Headquarters</div>
+
+      <div class="summary"><p>I helped design a student-built 3U CubeSat that uses onboard machine learning and multispectral imaging to detect when a cover crop has failed, using imagery an orbiting satellite can already see rather than requiring a farmer to inspect the field directly. The entry placed in the top 10 of NASA's Space to Soil Challenge, earning a travel prize to pitch the mission at NASA Headquarters.</p></div>
+
+      <div class="detail-label">What I did</div>
+      <ul class="detail">
+        <li>Contributed to the onboard classification pipeline: a <span class="inline-code">LightGBM</span> classifier trained on imagery from a MANTIS multispectral imager, flagging cover-crop failure signatures directly from the satellite's own data rather than downlinking raw imagery for ground processing.</li>
+        <li>Built the data pipeline around NASA's Harmonized Landsat Sentinel and OPERA satellite data products to source and validate training imagery against known ground conditions.</li>
+        <li>Helped develop the mission pitch, figures, technical narrative, delivery, that carried the team into the competition's top 10 and a pitch slot at NASA Headquarters.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>LightGBM, multispectral imaging, remote sensing, CubeSat systems</div>
+
+      <div class="video-cards">
+        <a class="video-card" href="https://youtu.be/Kg7ZKZ6pY6k" target="_blank" rel="noopener">
+          <span class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">Finalist pitch video<small>youtu.be/Kg7ZKZ6pY6k</small></span>
+        </a>
+        <a class="video-card" href="https://youtu.be/p90PzM5jEgg" target="_blank" rel="noopener">
+          <span class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">Mission explainer video<small>youtu.be/p90PzM5jEgg</small></span>
+        </a>
+      </div>
+    </article>
+
+    <article class="project" id="lunabotics">
+      <h3 class="project-title"><span class="loc">Caltech Air and Outer Space</span> - NASA Lunabotics: Lunar Regolith Excavator</h3>
+      <div class="project-where">Mechanical Subsystem Lead</div>
+      <div class="project-when">2025 to 2026, competed at Kennedy Space Center</div>
+
+      <div class="summary"><p>I designed the excavation subsystem for an autonomous lunar regolith excavator and led the twenty-person Mechanical Subsystem team through Caltech's first-ever entry into NASA's Lunabotics competition. The rover has to dig into and pile a berm of lunar-regolith simulant under real mechanical and power constraints, not just move across the surface; that excavation mechanism was the hardest single subsystem to get right, and mine.</p></div>
+
+      <figure class="fig">
+        <img src="media/lunabotics_rover.jpg" alt="The Lunabotics rover on sand: a blue chassis on six mesh-drum wheels with a custom excavation arm and gripper mounted at the front">
+        <figcaption>The Lunabotics rover, with the custom excavation arm and gripper I designed</figcaption>
+      </figure>
+
+      <div class="detail-label">What I did</div>
+      <ul class="detail">
+        <li>Designed a custom gripper and berm-loading arm for the excavation subsystem, engineered to move and pile regolith simulant within the competition's mechanical and power budget.</li>
+        <li>Led the twenty-person Mechanical Subsystem through design, fabrication, and integration, coordinating directly with the electrical and software subsystems for Caltech's first-ever entry into the competition.</li>
+        <li>Managed logistics and grant funding, including AIAA San Gabriel Valley Section support, to get the team and hardware to Kennedy Space Center for competition.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>Excavation mechanism design, CAD, team leadership, systems integration</div>
+
+      <div class="video-cards">
+        <a class="video-card" href="https://youtu.be/XTb9p00F0EE" target="_blank" rel="noopener">
+          <span class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">Robot video<small>youtu.be/XTb9p00F0EE</small></span>
+        </a>
+        <a class="video-card" href="https://youtu.be/ZENOp3-Nr3k" target="_blank" rel="noopener">
+          <span class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">Critical Design Review<small>youtu.be/ZENOp3-Nr3k</small></span>
+        </a>
+      </div>
+    </article>
+
+    <article class="project" id="globo">
+      <h3 class="project-title"><span class="loc">Caltech Air and Outer Space</span> - GLOBO Mission: High-Altitude CubeSat Launch</h3>
+      <div class="project-where">Mission Lead</div>
+      <div class="project-when">2024 to 2025, launched, featured by Caltech News</div>
+
+      <div class="summary"><p>I led a fifteen-member team of mostly first-year students through the full lifecycle of a low-cost, high-altitude CubeSat payload, from design to a launch that reached 60,000 feet for greenhouse-gas monitoring. Getting a first-year team through electronics, structure, CAD, and live launch operations in one cycle meant I owned both the technical build and the process that let new members actually contribute to flight hardware.</p></div>
+
+      <figure class="fig">
+        <img src="media/globo_balloon.jpg" alt="Team members in the desert holding a large white high-altitude balloon upright before launch, with ground station equipment laid out on a tarp" style="max-width:520px; margin:1.3rem auto; display:block;">
+        <figcaption>Preparing the high-altitude balloon for launch</figcaption>
+      </figure>
+
+      <div class="detail-label">What I did</div>
+      <ul class="detail">
+        <li>Led the team through the full mission lifecycle: payload design, electronics integration, CAD modeling, and launch-day operations.</li>
+        <li>Managed the real-time APRS telemetry system used to track the payload in flight and downlink greenhouse-gas sensor data.</li>
+        <li>Coordinated the full-stack build across electronics, structure, and CAD, structuring the work so first-year members got direct hands-on experience with flight hardware.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>CubeSat payload design, APRS telemetry, embedded electronics</div>
+
+      <div class="video-cards">
+        <a class="video-card" href="https://www.youtube.com/watch?v=ACOUn_jzYMI" target="_blank" rel="noopener">
+          <span class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">Launch video<small>youtube.com/watch?v=ACOUn_jzYMI</small></span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="https://www.caltech.edu/about/news/first-year-students-launch-high-altitude-mission-for-climate-research" target="_blank" rel="noopener">Caltech News coverage</a>
+      </div>
+    </article>
+
+    <article class="project" id="spectrasat">
+      <h3 class="project-title"><span class="loc">Caltech Air and Outer Space</span> - SpectraSat: Spectrometer CubeSat Mission</h3>
+      <div class="project-where">Project Lead</div>
+      <div class="project-when">2025 to Present, launch targeted for April 2026</div>
+
+      <div class="summary"><p>I am leading a $7,500 CubeSat mission built around a spectrometer payload for light-intensity measurements, taking the project through the same Preliminary Design Review and Critical Design Review gates an industry spacecraft mission would use, presented directly at NASA Jet Propulsion Laboratory. Running the mission on that formal review cadence, rather than an informal club timeline, is what let a student team catch design problems before they became hardware problems.</p></div>
+
+      <div class="detail-label">What I did</div>
+      <ul class="detail">
+        <li>Set the mission's Preliminary Design Review and Critical Design Review milestone gates and held the team to them, structuring the review packages the way an industry CubeSat program would.</li>
+        <li>Directed validation of the payload's light-intensity measurement approach, coordinating between the science requirement and the subsystem teams responsible for structure, power, and data handling.</li>
+        <li>Presented both design reviews directly to Jet Propulsion Laboratory Chief Engineers and Scientists and incorporated their technical feedback into the next design iteration.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>CubeSat systems engineering, design review process, technical program management</div>
+    </article>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- INTERNSHIPS -->
+  <!-- ============================================================ -->
+  <section class="group" id="internships" role="tabpanel" aria-labelledby="tabbtn-internships" hidden>
+    <h2>Internships</h2>
+
+    <article class="project" id="jpl">
+      <h3 class="project-title"><span class="loc">NASA Jet Propulsion Laboratory</span> - Ion Thruster Grid Erosion Simulation for Deep-Space Propulsion</h3>
+      <div class="project-where">Summer Research Intern (paid)</div>
+      <div class="project-when">June 2025 to August 2025</div>
+
+      <div class="summary"><p>I built a high-performance-computing simulation of ion thruster grid erosion to predict how long a deep-space thruster will actually last before the grid wears out, a question that directly determines how far a mission can fly. I ran the simulation on the Gattaca2 supercomputer and presented the results to fifteen senior research scientists, including Doctor Swati Mohan.</p></div>
+
+      <div class="detail-label">What I modeled and coded</div>
+      <ul class="detail">
+        <li>Developed a high-fidelity, Fortran-based simulation framework that models time-dependent grid erosion using an evolving surface mesh; the grid geometry itself changes over the simulated lifetime as material is sputtered away.</li>
+        <li>Parallelized the ion-impact routines with OpenMP and ran physically realistic erosion simulations on the Gattaca2 supercomputer.</li>
+        <li>Authored a technical report translating the simulation output into mission-relevant lifespan conclusions for a senior research audience.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>Fortran, high-performance computing, OpenMP, numerical methods</div>
+    </article>
+
+    <article class="project" id="lockheed">
+      <h3 class="project-title"><span class="loc">Lockheed Martin Space</span> - Materials Qualification for Spacecraft Launch Survivability</h3>
+      <div class="project-where">Parts, Materials, and Processes Lab, Engineering Intern (paid)</div>
+      <div class="project-when">June 2023 to August 2023</div>
+
+      <div class="summary"><p>I verified the quality of electrical parts used in spacecraft and launch-vehicle designs against military and space-industry standards, and tested thermal-film materials meant to protect spacecraft solar arrays during the vibration of launch. Getting this wrong means a part fails after it is already in orbit and unreachable, which is why the qualification process is as rigorous as it is.</p></div>
+
+      <figure class="fig">
+        <img src="media/lockheed_photo.jpg" alt="Priyanka in a lab coat standing in front of the illuminated Lockheed Martin logo wall in the building lobby" style="max-width:420px; margin:1.3rem auto; display:block;">
+        <figcaption>On-site at Lockheed Martin Space</figcaption>
+      </figure>
+
+      <div class="detail-label">What I did</div>
+      <ul class="detail">
+        <li>Tested electrical components, resistors, capacitors, heaters, using a Scanning Electron Microscope and X-ray Fluorescence Spectrometer, and performed decapsulation, grinding, and polishing to physically inspect part construction against military and space-industry standards.</li>
+        <li>Worked with senior research and development engineers to design test plans and evaluate thermal-film properties for withstanding launch vibration, protecting solar arrays on future spacecraft.</li>
+        <li>Explored propulsion, hypersonics, and additive manufacturing through internal courses and time in the Additive Design and Manufacturing Center.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>Scanning Electron Microscope and X-ray Fluorescence analysis, ASTM test standards, test plan design</div>
+    </article>
+
+    <article class="project" id="mifood">
+      <h3 class="project-title"><span class="loc">MiFood Tech</span> - Autonomous Food-Processing Robot: Chopper and Fridging Subsystems</h3>
+      <div class="project-where">Rev Ithaca Hardware Accelerator, Cornell University, Robotics Intern</div>
+      <div class="project-when">June 2022 to August 2022</div>
+
+      <div class="summary"><p>I designed the mechanical subsystems for an autonomous food-processing robot's vegetable chopper and fridging unit, working alongside Cornell postdoctoral researchers and industry engineers at a hardware-accelerator startup. The chopper needed to swap blades for different vegetables without a manual tool change, which is what drove the interchangeable-blade mechanism below.</p></div>
+
+      <div class="fig-row">
+        <figure class="fig">
+          <img src="media/mifood_cad_part.jpg" alt="SolidWorks CAD render of the interchangeable pulley and blade-mount disc for the chopper subsystem, with three circular mounts and keyed center bores">
+          <figcaption>CAD: interchangeable blade-mount disc</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="media/mifood_prototype.jpg" alt="Physical prototype of the interchangeable-blade chopper mechanism: a wooden housing with three circular blade cutouts over red and black gear-driven blade holders">
+          <figcaption>Prototype: the interchangeable-blade chopper mechanism</figcaption>
+        </figure>
+      </div>
+      <figure class="fig">
+        <img src="media/mifood_cad_assembly.jpg" alt="CAD assembly render of the chopper subsystem: a green cutting surface suspended by a rack-and-pinion frame with four motors driving linear rails around a central support column">
+        <figcaption>CAD assembly: the rack-and-pinion chopper subsystem</figcaption>
+      </figure>
+
+      <div class="detail-label">What I modeled and coded</div>
+      <ul class="detail">
+        <li>Designed CAD models for the vegetable chopper and fridging subsystem of the autonomous food-processing robot.</li>
+        <li>Designed a motor, rack, pinion, and gear system that creates an interchangeable-blade mechanism for the chopper, plus a linear-drop mechanism for the chopper subsystem, integrating between subsystem models and designing the assembly casings.</li>
+        <li>Ran field visits to local restaurants to understand practical constraints in food automation and folded those into the mechanical design.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>CAD, mechanism design, gear and rack-pinion systems, field research</div>
+    </article>
+
+    <article class="project" id="outwork">
+      <h3 class="project-title"><span class="loc">Outwork Automation</span> - Web-Based Cost-Quoting Tool for Small Machine Shops</h3>
+      <div class="project-where">Engineering Intern (paid)</div>
+      <div class="project-when">August 2022 to December 2022</div>
+
+      <div class="summary"><p>I built the front-end web application small machine shops use to generate cost quotes for machining jobs, entering run time, setup time, and material cost per operation to get a live per-part price estimate. The tool exists so a shop can price a job accurately in minutes instead of guessing, which directly affects whether that job is profitable.</p></div>
+
+      <figure class="fig">
+        <img src="media/outwork_screenshot.jpg" alt="Screenshot of the Outwork quoting web application: a form for entering run time, setup time, and material cost per operation, computing a total estimated cost of $41 per part">
+        <figcaption>The quoting tool: per-operation run time and cost inputs, live per-part estimate</figcaption>
+      </figure>
+
+      <div class="detail-label">What I built</div>
+      <ul class="detail">
+        <li>Prototyped the interface in Figma, then built the front-end web application in <span class="inline-code">React.js</span>, HTML, and CSS, computing a per-part cost estimate from per-operation run time, changeover time, and material cost inputs.</li>
+        <li>Applied my own machining and fabrication experience to help decide which machine-tracking metrics the tool should surface to shop owners.</li>
+        <li>Adapted quickly to changing project scope with minimal supervision under tight timelines, typical of an early-stage startup.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>React.js, Figma, front-end web development</div>
+    </article>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- MECHANICAL DESIGN -->
+  <!-- ============================================================ -->
+  <section class="group" id="mechanical" role="tabpanel" aria-labelledby="tabbtn-mechanical" hidden>
+    <h2>Mini Mechanical Projects</h2>
+
+    <article class="project" id="gearbox">
+      <h3 class="project-title"><span class="loc">Caltech Mechanical Engineering Design and Fabrication Course</span> - Two-Stage Spur Gear Transmission, "Transmission Impossible"</h3>
+      <div class="project-where">ME 14</div>
+      <div class="project-when">2025</div>
+
+      <div class="summary"><p>I designed, modeled, and fabricated a two-stage spur gear transmission for a class-wide torque-speed performance contest. Every design decision, gear ratios, tooth profile, shaft layout, came from a SolidWorks model and a MATLAB torque-speed analysis rather than trial and error, and I validated the finished build against instrumented dynamometer data recorded on contest day.</p></div>
+
+      <div class="fig-row">
+        <figure class="fig">
+          <img src="media/gearbox_dyno_detail.jpg" alt="Close-up of the two-stage spur gear transmission's shaft couplers and gear stages mounted in the clear acrylic housing">
+          <figcaption>Shaft couplers and gear stages in the acrylic housing</figcaption>
+        </figure>
+        <figure class="fig">
+          <video src="media/gearbox_test.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>The transmission under load on the dynamometer</figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-label">What I modeled and coded</div>
+      <ul class="detail">
+        <li>Modeled the full two-stage spur gear transmission in SolidWorks, gear tooth profiles, shaft supports, housing, and checked the design against the contest's torque and speed targets before cutting any material.</li>
+        <li>Wrote a MATLAB torque-speed analysis to choose gear ratios that maximized output performance within the competition's size and material limits, trading top speed for a fast, stable spin-up under load.</li>
+        <li>Fabricated and assembled the transmission, then documented the full process, design notebook, peer reviews, project debrief, for the course's engineering-documentation requirement.</li>
+      </ul>
+
+      <div class="detail-label">Results</div>
+      <div class="fig-row">
+        <figure class="fig">
+          <img src="media/transmission_rpm_chart.jpg" alt="Line chart of sample number versus output RPM, rising from 0 and asymptoting to roughly 525 RPM over about 1400 samples at 200 samples per second">
+          <figcaption>Output RPM versus sample number (200 samples per second), instructor-provided contest data</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="media/transmission_power_chart.jpg" alt="Line chart of sample number versus power, dipping to a minimum near -0.013 around sample 250 before recovering and leveling off near -0.0115">
+          <figcaption>Power versus sample number: start-up transient and steady-state settling</figcaption>
+        </figure>
+      </div>
+      <p style="color:var(--ink-soft); max-width:64ch;">The gearbox reached a steady-state output speed of roughly 525 RPM within about 4 seconds of start-up, with power draw dipping during the initial acceleration transient before settling, consistent with the gear ratios the MATLAB analysis chose to prioritize a fast, stable spin-up over top speed.</p>
+
+      <div class="skills"><div class="detail-label">Skills</div>SolidWorks, gear train design, MATLAB analysis, machining, dynamometer testing</div>
+    </article>
+
+    <article class="project" id="plotter">
+      <h3 class="project-title"><span class="loc">Caltech Mechanical Engineering Mechatronics Course</span> - CNC Pen Plotter with a Custom G-Code Interpreter</h3>
+      <div class="project-where">ME 14</div>
+      <div class="project-when">2025, one-week build</div>
+
+      <div class="summary"><p>I built a two-axis CNC pen plotter from scratch in one week, mechanism, motor driver electronics, and firmware, that parses raw G-code and drives a belt-and-pulley gantry to reproduce two-dimensional line drawings on paper. The one-week timeline meant every failure mode had to be debugged and fixed the same day it showed up.</p></div>
+
+      <div class="fig-row">
+        <figure class="fig">
+          <img src="media/plotter_setup.jpg" alt="The 3D-printed pen plotter: a purple belt-driven gantry frame with a blue pen-holding arm positioned over a sheet of paper taped to a wooden base, wired to a breadboard and Arduino Nano">
+          <figcaption>The plotter mechanism: belt-driven gantry, servo pen-lift arm, driver electronics</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="media/plotter_drawing.jpg" alt="The pen plotter mid-draw, tracing an irregular closed outline in red ink on paper">
+          <figcaption>Mid-draw: tracing a G-code path in real time</figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-label">What I modeled and coded</div>
+      <ul class="detail">
+        <li>Designed and 3D-printed a two-axis Cartesian gantry with a belt-and-pulley drive on each axis and a servo-actuated pen-lift mechanism, wired to <span class="inline-code">28BYJ-48</span> stepper motors through a breadboarded driver circuit on an Arduino Nano.</li>
+        <li>Wrote a G-code interpreter in embedded C++ that parses standard <span class="inline-code">G0</span> and <span class="inline-code">G1</span> move commands and pen up and down commands, converting each line segment into synchronized step counts for both axes.</li>
+        <li>Debugged real mechanical failure modes under the one-week deadline, belt slip, stepper skipping under acceleration, inconsistent pen pressure, by iterating on both the firmware's motion profile and the mechanism's belt tensioning.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>Embedded C++, G-code parsing, stepper motor control, Arduino, 3D-printed mechanism design</div>
+    </article>
+
+    <article class="project" id="linecar">
+      <h3 class="project-title"><span class="loc">Caltech Mechanical Engineering Mechatronics Course</span> - Line-Following Car Using Analog Circuits</h3>
+      <div class="project-where">Course Project</div>
+
+      <div class="summary"><p>I designed and built a line-following car as part of a course that gave me an introduction to mechatronics. I built an autonomous vehicle that could follow a one-inch-wide line on the floor using purely analog circuitry, without any software control. I learned how to use operational-amplifier circuits to process signals from two photoresistors, which served as light sensors to detect the line's position, and by tuning potentiometers I fine-tuned the sensitivity and behavior of the control system so the car could accurately follow the line. The car was powered entirely by circuits, with no microcontrollers or programming involved. I also explored pulse-width modulation for motor control and carefully integrated the power systems, using a 12-volt lithium-ion battery for the motors and dual 9-volt batteries for the circuitry.</p></div>
+
+      <div class="fig-row">
+        <figure class="fig">
+          <img src="media/line_car.jpg" alt="Top-down photo of the breadboard-based analog line-following car: dense red, black, and white wiring across two breadboards, two DC gearmotors with wheels, a 9-volt battery, and photoresistor light sensors, sitting on a floor with a black line for line-following">
+          <figcaption>The analog line-following car, fully wired on twin breadboards, positioned over its one-inch guide line</figcaption>
+        </figure>
+        <figure class="fig">
+          <video src="media/linecar_demo.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>The car following the line under purely analog control</figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-label">What I built</div>
+      <ul class="detail">
+        <li>Built two <strong>operational-amplifier comparator circuits</strong>, one per photoresistor, that continuously compare each sensor's light-dependent voltage against a reference set by a potentiometer, converting the raw analog light readings into a differential steering signal with no microcontroller in the loop.</li>
+        <li>Tuned potentiometers to set the comparator thresholds and steering sensitivity, trading off aggressive correction, which risks oscillating off the line, against sluggish tracking, which risks losing it on a turn, until the car reliably held the one-inch line.</li>
+        <li>Used pulse-width modulation to control drive-motor speed directly from the analog steering signal, and separated the power system into a 12-volt lithium-ion battery dedicated to the two drive motors and dual 9-volt batteries dedicated to the operational-amplifier circuitry, isolating motor-driven electrical noise from the sensing electronics.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>Analog circuit design, operational amplifiers, photoresistor sensing, potentiometer tuning, pulse-width modulation, power-system integration, mechatronics</div>
+    </article>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- INDEPENDENT PROJECTS -->
+  <!-- ============================================================ -->
+  <section class="group" id="independent" role="tabpanel" aria-labelledby="tabbtn-independent" hidden>
+    <h2>Independent Projects</h2>
+
+    <article class="project" id="nasasees">
+      <h3 class="project-title"><span class="loc">NASA Sensing our Planet: Explorations for Everyone in Science</span> - Long Short-Term Memory Forecasting of Lake Water Volume from Satellite Data</h3>
+      <div class="project-where">NASA SEES Program</div>
+
+      <div class="summary"><p>I built an automated pipeline to source and process satellite altimetry data for California lakes and reservoirs, then trained a model that predicts water volume years in advance, directly relevant to long-term water-crisis planning. The hard part was not the model; it was building a reliable, repeatable pipeline to turn raw satellite passes into a clean per-lake time series in the first place.</p></div>
+
+      <div class="detail-label">What I modeled and coded</div>
+      <ul class="detail">
+        <li>Wrote Python scripts, largely through Google Colaboratory and QGIS's <span class="inline-code">PyQGIS</span> API, to automate sourcing and downloading ICESat-2 altimetry data from OpenAltimetry and the National Snow and Ice Data Center.</li>
+        <li>Extracted lake and reservoir boundaries across California by drawing bounding boxes and converting raster imagery into vector shapefiles, then used those shapefiles together with each ICESat-2 track's longitude and latitude data to find intersection points between the satellite path and the lake, sampling up to 100,000 water-elevation points per lake.</li>
+        <li>Trained a Long Short-Term Memory model on water-level measurements from five lakes, explicitly accounting for the sinusoidal seasonal fluctuations in the data, to predict water level and volume years in advance.</li>
+      </ul>
+
+      <div class="skills"><div class="detail-label">Skills</div>Long Short-Term Memory and time-series machine learning, Python, QGIS and PyQGIS, remote sensing (ICESat-2, Landsat)</div>
+
+      <div class="video-cards">
+        <a class="video-card" href="https://youtu.be/7xi6A9HeBX8" target="_blank" rel="noopener">
+          <span class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">Project presentation<small>youtu.be/7xi6A9HeBX8</small></span>
+        </a>
+      </div>
+    </article>
+  </section>
+
+  <footer class="page-foot">
+    <p>Bay Area, California and Los Angeles, California · <a href="mailto:priyanka@caltech.edu">priyanka@caltech.edu</a> · <a href="https://github.com/PriyankaSB24" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
+
+</div>
+
+<button class="toggle-btn" id="themeToggle" type="button" aria-label="Toggle color theme">◐ theme</button>
+
+<div class="deck-overlay" id="deckOverlay" hidden>
+  <button class="deck-close" id="deckClose" type="button" aria-label="Close presentation viewer">×</button>
+  <img id="deckImg" src="" alt="Presentation slide">
+  <div class="deck-bar">
+    <button id="deckPrev" type="button">Previous</button>
+    <span id="deckCounter">Slide 1 of 32</span>
+    <button id="deckNext" type="button">Next</button>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    try{
+      var saved = localStorage.getItem('psb-portfolio-theme');
+      if(saved === 'dark' || saved === 'light'){ root.setAttribute('data-theme', saved); }
+    }catch(e){}
+    btn.addEventListener('click', function(){
+      var current = root.getAttribute('data-theme');
+      var next;
+      if(current === 'dark'){ next = 'light'; }
+      else if(current === 'light'){ next = null; }
+      else { next = 'dark'; }
+      if(next){ root.setAttribute('data-theme', next); } else { root.removeAttribute('data-theme'); }
+      try{ localStorage.setItem('psb-portfolio-theme', next || ''); }catch(e){}
+    });
+  })();
+
+  (function(){
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
+    var panels = {
+      research: document.getElementById('research'),
+      caos: document.getElementById('caos'),
+      mechanical: document.getElementById('mechanical'),
+      internships: document.getElementById('internships'),
+      independent: document.getElementById('independent')
+    };
+    var projectToTab = {
+      rexlab:'research', arclab:'research', 'lidar-mars':'research', mtu:'research', mscberkeley:'research',
+      spectrasat:'caos', coverguard:'caos', lunabotics:'caos', globo:'caos',
+      gearbox:'mechanical', plotter:'mechanical', linecar:'mechanical',
+      jpl:'internships', lockheed:'internships', mifood:'internships', outwork:'internships',
+      nasasees:'independent'
+    };
+
+    function showTab(name){
+      if(!panels[name]) return;
+      tabs.forEach(function(b){
+        var on = b.dataset.tab === name;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      Object.keys(panels).forEach(function(k){ panels[k].hidden = (k !== name); });
+      document.body.setAttribute('data-active-tab', name);
+      try{ sessionStorage.setItem('psb-tab', name); }catch(e){}
+    }
+
+    tabs.forEach(function(b){
+      b.addEventListener('click', function(){
+        showTab(b.dataset.tab);
+        history.replaceState(null, '', '#' + b.dataset.tab);
+      });
+    });
+
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      var id = a.getAttribute('href').slice(1);
+      if(projectToTab[id]){ showTab(projectToTab[id]); }
+    });
+
+    function initFromLocation(){
+      var hash = location.hash.replace('#', '');
+      if(hash && projectToTab[hash]){
+        showTab(projectToTab[hash]);
+        setTimeout(function(){
+          var el = document.getElementById(hash);
+          if(el) el.scrollIntoView();
+        }, 0);
+        return;
+      }
+      if(hash && panels[hash]){ showTab(hash); return; }
+      var stored;
+      try{ stored = sessionStorage.getItem('psb-tab'); }catch(e){}
+      showTab(stored && panels[stored] ? stored : 'research');
+    }
+    initFromLocation();
+    window.addEventListener('hashchange', initFromLocation);
+  })();
+
+  (function(){
+    var DECKS = {
+      rexlab: { count: 32, path: 'media/rexlab_deck/slide-' },
+      arclab: { count: 20, path: 'media/arclab_deck/slide-' },
+      lidar: { count: 26, path: 'media/lidar_deck/slide-' }
+    };
+    var overlay = document.getElementById('deckOverlay');
+    var img = document.getElementById('deckImg');
+    var counter = document.getElementById('deckCounter');
+    var current = null, idx = 1;
+
+    function pad(n){ return n < 10 ? '0' + n : '' + n; }
+    function render(){
+      var d = DECKS[current];
+      img.src = d.path + pad(idx) + '.jpg';
+      counter.textContent = 'Slide ' + idx + ' of ' + d.count;
+    }
+    function open(name){
+      if(!DECKS[name]) return;
+      current = name; idx = 1;
+      overlay.hidden = false;
+      render();
+    }
+    function close(){ overlay.hidden = true; current = null; }
+
+    document.querySelectorAll('[data-deck-open]').forEach(function(b){
+      b.addEventListener('click', function(){ open(b.getAttribute('data-deck-open')); });
+    });
+    document.getElementById('deckClose').addEventListener('click', close);
+    document.getElementById('deckPrev').addEventListener('click', function(){
+      if(!current) return;
+      idx = idx > 1 ? idx - 1 : DECKS[current].count;
+      render();
+    });
+    document.getElementById('deckNext').addEventListener('click', function(){
+      if(!current) return;
+      idx = idx < DECKS[current].count ? idx + 1 : 1;
+      render();
+    });
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+    document.addEventListener('keydown', function(e){
+      if(overlay.hidden) return;
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowLeft') document.getElementById('deckPrev').click();
+      if(e.key === 'ArrowRight') document.getElementById('deckNext').click();
+    });
+  })();
+</script>
